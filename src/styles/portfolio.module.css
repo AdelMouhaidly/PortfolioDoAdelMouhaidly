@@ -24,8 +24,8 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  width: 130px; /* Largura fixa */
-  height: 180px; /* Altura fixa */
+  width: 130px;
+  height: 180px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -192,7 +192,7 @@
 .mensagemFinal {
   font-size: 1.2rem;
   font-style: italic;
-  color: #6a6aff; /* Cor azul destacada */
+  color: #6a6aff;
   margin-top: 20px;
   text-align: center;
 }
