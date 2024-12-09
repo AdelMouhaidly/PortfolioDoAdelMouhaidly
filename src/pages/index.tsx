@@ -70,8 +70,8 @@ export default function Home() {
   
   {/* Mensagem Inspiradora */}
   <p className={styles.mensagemFinal}>
-    "O conhecimento é infinito, e o desejo de aprender é o que nos leva além. Estou preparado para crescer, colaborar 
-    e fazer a diferença no mundo da tecnologia."
+  &quot;O conhecimento é infinito, e o desejo de aprender é o que nos leva além. Estou preparado para crescer, colaborar 
+  e fazer a diferença no mundo da tecnologia.&quot;
   </p>
 </section>
 
