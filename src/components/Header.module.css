@@ -20,11 +20,11 @@
   color: #6a6aff;
 }
 
-.nomeBranco {
-  color: #ffffff;
+.portfolio {
+  color: #fff;
 }
 
-.navList {
+.navList ul {
   list-style: none;
   display: flex;
   gap: 30px;
@@ -33,9 +33,51 @@
 .navList a {
   color: #fff;
   font-size: 1rem;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
 .navList a:hover {
   color: #6a6aff;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+.navList.showMenu {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .navList {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: #111;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .navList ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
