@@ -167,7 +167,7 @@ export default function Home() {
   <div className={styles.gridProjetos}>
     {/* Projeto 1 */}
     <div className={styles.cartaoProjeto}>
-      <Image src="/commit3.png" alt="Projeto 1" width={400} height={200} />
+      <Image src="/chargemapnext.png" alt="Projeto 1" width={400} height={200} />
       <h3>ChargeMap feito em Next.js</h3>
       <p>
       <strong>ChargeMap:</strong> Desenvolvi uma aplicação web que facilita a localização e roteirização de pontos de carregamento para veículos elétricos. O sistema permite a reserva de 
@@ -185,7 +185,7 @@ export default function Home() {
 
     {/* Projeto 2 */}
     <div className={styles.cartaoProjeto}>
-      <Image src="/commit2.png" alt="Projeto 2" width={400} height={200} />
+      <Image src="/chargemapfront.png" alt="Projeto 2" width={400} height={200} />
       <h3>ChargeMap feito em Python</h3>
       <p>
       Desenvolvi um sistema interativo em <strong>Python</strong> com integração ao banco de dados <strong>SQL</strong> para auxiliar motoristas de veículos elétricos. O sistema conta com uma tela de login autenticada e funcionalidades essenciais, como encontrar 
