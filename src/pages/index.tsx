@@ -143,12 +143,12 @@ export default function Home() {
             </div>
             <div className={styles.contatoItem}>
               <strong>Telefone:</strong>
-              <span>(11) 94254-8605</span>
+              <span>(11) 91587-5111</span>
             </div>
             <div className={styles.contatoItem}>
               <strong>LinkedIn:</strong>
-              <a href="https://www.linkedin.com/in/adel-mouhaidly-bb5877339/" target="_blank" rel="noopener noreferrer">
-              www.linkedin.com/in/adel-mouhaidly-bb5877339/
+              <a href="www.linkedin.com/in/adelmouhaidly" target="_blank" rel="noopener noreferrer">
+              www.linkedin.com/in/adelmouhaidly
               </a>
             </div>
             <div className={styles.contatoItem}>
