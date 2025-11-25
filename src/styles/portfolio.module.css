@@ -6,12 +6,13 @@
 }
 
 .skillsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
   text-align: center;
   padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .skillItem {
@@ -19,182 +20,702 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  width: 130px;
-  height: 180px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.08) 0%, rgba(0, 0, 0, 0.2) 100%);
+  padding: 28px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(106, 106, 255, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  min-height: 190px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.skillItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #6a6aff, transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.skillItem:hover::before {
+  transform: translateX(100%);
 }
 
 .skillItem:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(106, 106, 255, 0.4);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 35px rgba(106, 106, 255, 0.5);
+  border-color: rgba(106, 106, 255, 0.6);
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .skillItem img {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.skillItem:hover img {
+  transform: scale(1.1) translateY(-5px);
 }
 
 .skillItem span {
   color: #ffffff;
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.3px;
 }
 
 .skillLevel {
-  color: #aaa;
-  font-size: 0.9rem;
+  color: #999;
+  font-size: 0.88rem;
   font-style: italic;
+  font-weight: 500;
+  padding: 4px 12px;
+  background: rgba(106, 106, 255, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(106, 106, 255, 0.15);
 }
 
-.gridProjetos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+/* Seção de Projetos */
+.subtituloSecao {
   text-align: center;
+  color: #aaa;
+  font-size: 1.15rem;
+  margin-bottom: 45px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
-.cartaoProjeto {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Grid de Projetos em Destaque */
+.gridProjetosDestaque {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 35px;
+  margin-bottom: 60px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.cartaoProjeto:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(106, 106, 255, 0.4);
+.cartaoProjetoDestaque {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cartaoProjetoDestaque:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(106, 106, 255, 0.35);
+  border-color: rgba(106, 106, 255, 0.6);
+}
+
+.imagemProjetoContainer {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #111 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gradientes para cada tipo de projeto - Tema Preto e Roxo */
+.gradientAI {
+  background: linear-gradient(135deg, #1a1a1a 0%, #6a6aff 100%);
+}
+
+.gradientNext {
+  background: linear-gradient(135deg, #0a0a0a 0%, #5a5aef 100%);
+}
+
+.gradientMobile {
+  background: linear-gradient(135deg, #1a1a2e 0%, #7a7aff 100%);
+}
+
+.gradientPython {
+  background: linear-gradient(135deg, #0f0f0f 0%, #6a6aff 100%);
+}
+
+.gradientDevOps {
+  background: linear-gradient(135deg, #1a1a1a 0%, #8a8aff 100%);
+}
+
+.gradientCloud {
+  background: linear-gradient(135deg, #0a0a0a 0%, #6a6aff 100%);
+}
+
+/* Ícone do projeto */
+.projetoIconWrapper {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(106, 106, 255, 0.1);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(106, 106, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cartaoProjetoDestaque:hover .projetoIconWrapper {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(106, 106, 255, 0.2);
+  border-color: rgba(106, 106, 255, 0.6);
+  box-shadow: 0 0 30px rgba(106, 106, 255, 0.4);
+}
+
+.projetoIcon {
+  width: 60px;
+  height: 60px;
+  color: #6a6aff;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+
+.overlayProjeto {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  z-index: 2;
+}
+
+.tagProjeto {
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.95) 0%, rgba(90, 90, 239, 0.95) 100%);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.conteudoProjeto {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.conteudoProjeto h3 {
+  font-size: 1.45rem;
+  margin-bottom: 16px;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.conteudoProjeto p {
+  color: #bbb;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  flex: 1;
+  font-size: 0.98rem;
+}
+
+.botoesProjeto {
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
+  flex-wrap: wrap;
 }
 
 .botaoGitHub {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #000;
+  padding: 13px 26px;
+  background: linear-gradient(135deg, #6a6aff 0%, #5a5aef 100%);
   color: #ffffff;
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(106, 106, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.botaoGitHub::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.botaoGitHub:hover::before {
+  left: 100%;
 }
 
 .botaoGitHub:hover {
-  background-color: #333;
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #7a7aff 0%, #6a6aff 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(106, 106, 255, 0.5);
+}
+
+.botaoDemo {
+  display: inline-block;
+  padding: 13px 26px;
+  background: transparent;
+  color: #6a6aff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #6a6aff;
+  cursor: pointer;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.botaoDemo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #6a6aff;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.botaoDemo:hover::before {
+  width: 100%;
+}
+
+.botaoDemo:hover {
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(106, 106, 255, 0.4);
+  border-color: #7a7aff;
+}
+
+/* Placeholders para novos projetos */
+.projetoPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.projetoPlaceholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(106, 106, 255, 0.03) 10px,
+      rgba(106, 106, 255, 0.03) 20px
+    );
+}
+
+.placeholderIconWrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(106, 106, 255, 0.1);
+  border-radius: 50%;
+  border: 2px dashed rgba(106, 106, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.cartaoProjetoDestaque:hover .placeholderIconWrapper {
+  background: rgba(106, 106, 255, 0.15);
+  border-color: rgba(106, 106, 255, 0.5);
+  transform: rotate(90deg);
+}
+
+.placeholderSvg {
+  width: 40px;
+  height: 40px;
+  color: rgba(106, 106, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.cartaoProjetoDestaque:hover .placeholderSvg {
+  color: #6a6aff;
+}
+
+.placeholderText {
+  margin-top: 20px;
+  color: rgba(106, 106, 255, 0.6);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
+}
+
+.tagProjetoPlaceholder {
+  background: rgba(106, 106, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(106, 106, 255, 0.3);
+}
+
+.botaoDisabled {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgba(106, 106, 255, 0.1);
+  color: rgba(106, 106, 255, 0.5);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 2px solid rgba(106, 106, 255, 0.2);
+  cursor: not-allowed;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
 }
 
 .comentarioProjetos {
-  margin-top: 30px;
+  margin-top: 50px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #ccc;
+  padding: 30px;
+  background: rgba(106, 106, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(106, 106, 255, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .comentarioProjetos strong {
   color: #6a6aff;
+  font-weight: 700;
 }
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+/* Sobre Container */
+.sobreContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sobreTexto p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ddd;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.sobreTexto strong {
+  color: #6a6aff;
+  font-weight: 600;
+}
+
+/* Experiência Container */
+.experienciaContainer {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(106, 106, 255, 0.2);
+}
+
+.subtituloSecaoInterno {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff 0%, #6a6aff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.experienciaCard {
+  background: rgba(106, 106, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(106, 106, 255, 0.1);
+}
+
+.experienciaCard p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ddd;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.experienciaCard strong {
+  color: #6a6aff;
+  font-weight: 600;
 }
 
 .hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 150px 50px 50px;
-  gap: 20px;
+  padding: 150px 50px 80px;
+  gap: 60px;
   box-sizing: border-box;
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 0 0 30px 30px;
+  margin-bottom: 40px;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .textoHero h1 {
   font-size: 3.5rem;
-  font-weight: bold;
+  font-weight: 800;
   color: #ffffff;
   line-height: 1.2;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .destaque {
   color: #6a6aff;
+  background: linear-gradient(135deg, #6a6aff 0%, #8a8aff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .botaoCta {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #6a6aff;
+  margin-top: 30px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #6a6aff 0%, #5a5aef 100%);
   color: white;
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 5px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 106, 255, 0.3);
+  letter-spacing: 0.5px;
 }
 
 .botaoCta:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(106, 106, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(106, 106, 255, 0.5);
+  background: linear-gradient(135deg, #7a7aff 0%, #6a6aff 100%);
 }
 
 .imagemHero {
   text-align: center;
+  position: relative;
 }
 
 .fotoPerfil {
-  border-radius: 10px;
+  border-radius: 20px;
   max-width: 90%;
   height: auto;
-  border: 3px solid #6a6aff;
+  border: 4px solid #6a6aff;
+  box-shadow: 0 10px 30px rgba(106, 106, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.fotoPerfil:hover {
+  transform: scale(1.02);
 }
 
 .secao {
-  margin: 100px 20px;
-  padding: 20px;
-  background: #111;
-  border-radius: 10px;
+  margin: 80px auto;
+  padding: 50px 40px;
+  background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(106, 106, 255, 0.1);
   opacity: 0;
   transform: translateY(20px);
   animation: fadeIn 1s forwards ease-in-out;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  max-width: 1400px;
+  width: calc(100% - 40px);
+}
+
+.secao:hover {
+  border-color: rgba(106, 106, 255, 0.2);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
 }
 
 .contatoContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 40px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .contatoItem {
   display: flex;
-  flex-direction: column;
-  font-size: 1.1rem;
+  align-items: center;
+  gap: 20px;
+  font-size: 1rem;
   color: #fff;
+  padding: 28px 30px;
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(106, 106, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-.contatoItem a {
+.contatoItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #6a6aff 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contatoItem:hover::before {
+  opacity: 1;
+}
+
+.contatoItem:hover {
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+  border-color: rgba(106, 106, 255, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 35px rgba(106, 106, 255, 0.2);
+}
+
+.contatoIconWrapper {
+  min-width: 60px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.15) 0%, rgba(106, 106, 255, 0.05) 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(106, 106, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contatoItem:hover .contatoIconWrapper {
+  background: linear-gradient(135deg, rgba(106, 106, 255, 0.25) 0%, rgba(106, 106, 255, 0.1) 100%);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(106, 106, 255, 0.3);
+}
+
+.contatoIcon {
+  width: 28px;
+  height: 28px;
   color: #6a6aff;
-  text-decoration: none;
-  transition: color 0.3s;
 }
 
-.contatoItem a:hover {
-  color: #ffffff;
+.contatoInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.contatoLabel {
+  color: #6a6aff;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+
+.contatoLink {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: block;
+}
+
+.contatoLink:hover {
+  color: #8a8aff;
+  padding-left: 5px;
+}
+
+.contatoTexto {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .mensagemFinal {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-style: italic;
   color: #6a6aff;
-  margin-top: 20px;
+  margin-top: 40px;
   text-align: center;
+  padding: 30px;
+  background: rgba(106, 106, 255, 0.05);
+  border-radius: 15px;
+  border-left: 4px solid #6a6aff;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes fadeIn {
@@ -205,13 +726,42 @@
 }
 
 .tituloSecao {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #6a6aff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.tituloSecao::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #6a6aff, transparent);
+  border-radius: 2px;
+}
+
+@media (max-width: 1200px) {
+  .gridProjetosDestaque {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 30px;
+  }
 }
 
 @media (max-width: 1024px) {
   .hero {
     flex-direction: column;
-    padding: 80px 20px;
+    padding: 100px 20px 60px;
+    gap: 40px;
   }
 
   .textoHero h1 {
@@ -222,24 +772,74 @@
   .imagemHero {
     margin-top: 20px;
   }
+
+  .gridProjetosDestaque {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 28px;
+  }
+
+  .sobreTexto p,
+  .experienciaCard p {
+    text-align: left;
+  }
+
+  .imagemProjetoContainer {
+    height: 260px;
+  }
 }
 
 @media (max-width: 768px) {
   .skillsContainer {
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+    padding: 15px;
   }
 
   .skillItem {
+    min-height: 165px;
+    padding: 22px 15px;
+  }
+
+  .skillItem img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .gridProjetosDestaque {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 0 5px;
+  }
+
+  .cartaoProjetoDestaque {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .imagemProjetoContainer {
+    height: 240px;
+  }
+
+  .projetoIconWrapper {
     width: 100px;
-    height: 150px;
+    height: 100px;
   }
 
-  .gridProjetos {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  .projetoIcon {
+    width: 50px;
+    height: 50px;
   }
 
-  .cartaoProjeto {
-    padding: 15px;
+  .conteudoProjeto {
+    padding: 22px;
+  }
+
+  .conteudoProjeto h3 {
+    font-size: 1.3rem;
+  }
+
+  .conteudoProjeto p {
+    font-size: 0.95rem;
   }
 
   .textoHero h1 {
@@ -247,54 +847,234 @@
   }
 
   .botaoCta {
-    padding: 10px 15px;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+
+  .tituloSecao {
+    font-size: 2.2rem;
+  }
+
+  .subtituloSecao {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  .botoesProjeto {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .botaoGitHub,
+  .botaoDemo,
+  .botaoDisabled {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contatoContainer {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .contatoItem {
+    padding: 24px;
+    gap: 18px;
+  }
+
+  .contatoIconWrapper {
+    min-width: 55px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .contatoIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .secao {
+    padding: 35px 22px;
+    margin: 60px 10px;
+  }
+
+  .placeholderIconWrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .placeholderSvg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .placeholderText {
     font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero {
-    padding: 50px 10px;
+    padding: 90px 15px 40px;
   }
 
   .textoHero h1 {
-    font-size: 2rem;
-    line-height: 1.2;
+    font-size: 1.9rem;
+    line-height: 1.3;
     text-align: center;
   }
 
   .botaoCta {
-    font-size: 0.8rem;
-    padding: 8px 12px;
+    font-size: 0.85rem;
+    padding: 12px 22px;
   }
 
   .skillsContainer {
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+    padding: 15px 10px;
   }
 
   .skillItem {
-    width: 90px;
-    height: 130px;
-  }
-
-  .gridProjetos {
-    grid-template-columns: 1fr;
-  }
-
-  .contatoContainer {
+    min-height: 150px;
+    padding: 18px 12px;
     gap: 10px;
   }
 
+  .skillItem img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .skillItem span {
+    font-size: 0.95rem;
+  }
+
+  .skillLevel {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+
+  .gridProjetosDestaque {
+    gap: 20px;
+    padding: 0;
+  }
+
+  .imagemProjetoContainer {
+    height: 220px;
+  }
+
+  .projetoIconWrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .projetoIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .conteudoProjeto {
+    padding: 20px;
+  }
+
+  .conteudoProjeto h3 {
+    font-size: 1.2rem;
+  }
+
+  .conteudoProjeto p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .contatoContainer {
+    gap: 20px;
+    padding: 30px 0;
+  }
+
   .contatoItem {
-    font-size: 1rem;
+    padding: 22px 20px;
+    gap: 16px;
+    flex-direction: row;
+  }
+
+  .contatoIconWrapper {
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .contatoIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .contatoLabel {
+    font-size: 0.8rem;
+  }
+
+  .contatoLink,
+  .contatoTexto {
+    font-size: 0.9rem;
   }
 
   .tituloSecao {
-    font-size: 2rem;
+    font-size: 1.75rem;
     text-align: center;
+  }
+
+  .subtituloSecao {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  .subtituloSecaoInterno {
+    font-size: 1.4rem;
   }
 
   .comentarioProjetos {
     font-size: 1rem;
+    padding: 22px 18px;
+  }
+
+  .mensagemFinal {
+    font-size: 1.05rem;
+    padding: 22px 18px;
+  }
+
+  .sobreTexto p,
+  .experienciaCard p {
+    font-size: 0.98rem;
+  }
+
+  .secao {
+    padding: 28px 18px;
+    margin: 45px 8px;
+  }
+
+  .placeholderIconWrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .placeholderSvg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .placeholderText {
+    font-size: 0.85rem;
+    margin-top: 15px;
+  }
+
+  .botoesProjeto {
+    gap: 10px;
+  }
+
+  .botaoGitHub,
+  .botaoDemo,
+  .botaoDisabled {
+    padding: 11px 20px;
+    font-size: 0.9rem;
   }
 }

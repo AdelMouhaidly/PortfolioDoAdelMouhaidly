@@ -3,15 +3,18 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
-  background: #111;
-  padding: 10px 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  height: 80px;
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 10px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  border-bottom: 1px solid rgba(106, 106, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .logo {
@@ -34,11 +37,32 @@
   color: #fff;
   font-size: 1rem;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
+  padding: 8px 15px;
+  border-radius: 8px;
+  position: relative;
+  font-weight: 500;
+}
+
+.navList a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #6a6aff;
+  transition: width 0.3s ease;
 }
 
 .navList a:hover {
   color: #6a6aff;
+  background: rgba(106, 106, 255, 0.1);
+}
+
+.navList a:hover::after {
+  width: 80%;
 }
 
 .hamburger {
@@ -60,21 +84,38 @@
 }
 
 @media (max-width: 768px) {
+  .header {
+    padding: 10px 20px;
+    height: 70px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
   .navList {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 70px;
     left: 0;
-    background: #111;
+    background: rgba(17, 17, 17, 0.98);
+    backdrop-filter: blur(10px);
     width: 100%;
     text-align: center;
     padding: 20px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(106, 106, 255, 0.1);
   }
 
   .navList ul {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+  }
+
+  .navList a {
+    display: block;
+    padding: 12px 20px;
   }
 
   .hamburger {
