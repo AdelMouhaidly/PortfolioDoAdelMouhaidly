@@ -16,7 +16,6 @@ export default function Home() {
       <main className={styles.container}>
         <Header />
 
-        {/* Hero */}
         <section className={`${styles.hero} ${styles.fadeIn}`}>
           <div className={styles.textoHero}>
             <h1>
@@ -39,7 +38,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Sobre Mim */}
         <section id="sobre" className={styles.secao}>
           <h2 className={styles.tituloSecao}>Sobre Mim</h2>
           <div className={styles.sobreContainer}>
@@ -59,7 +57,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Experiência Profissional */}
           <div className={styles.experienciaContainer}>
             <h3 className={styles.subtituloSecaoInterno}>Experiência Profissional</h3>
             <div className={styles.experienciaCard}>
@@ -76,16 +73,12 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Mensagem Inspiradora */}
           <p className={styles.mensagemFinal}>
             &quot;O conhecimento é infinito, e o desejo de aprender é o que nos leva além. Estou preparado para crescer, colaborar 
             e fazer a diferença no mundo da tecnologia.&quot;
           </p>
         </section>
 
-
-
-        {/* Habilidades */}
         <section id="habilidades" className={styles.secao}>
   <h2 className={styles.tituloSecao}>Minhas Habilidades</h2>
   <div className={styles.skillsContainer}>
@@ -227,15 +220,12 @@ export default function Home() {
           </div>
         </section>
 
-
-        {/* Projetos em Destaque */}
         <section id="projetos" className={`${styles.secao} ${styles.fadeIn}`}>
           <h2 className={styles.tituloSecao}>Projetos em Destaque</h2>
           <p className={styles.subtituloSecao}>
             Alguns dos meus principais projetos que demonstram minhas habilidades e experiência
           </p>
           <div className={styles.gridProjetosDestaque}>
-            {/* Projeto 1 - SkillBridge */}
             <div className={styles.cartaoProjetoDestaque}>
               <div className={`${styles.imagemProjetoContainer} ${styles.gradientAI}`}>
                 <div className={styles.projetoIconWrapper}>
@@ -270,7 +260,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Projeto 2 - ChargeMap Next.js */}
             <div className={styles.cartaoProjetoDestaque}>
               <div className={`${styles.imagemProjetoContainer} ${styles.gradientNext}`}>
                 <div className={styles.projetoIconWrapper}>
@@ -303,7 +292,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Projeto 3 - NeoMoto Challenge */}
             <div className={styles.cartaoProjetoDestaque}>
               <div className={`${styles.imagemProjetoContainer} ${styles.gradientMobile}`}>
                 <div className={styles.projetoIconWrapper}>
@@ -336,7 +324,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Projeto 4 - ChargeMap Python */}
             <div className={styles.cartaoProjetoDestaque}>
               <div className={`${styles.imagemProjetoContainer} ${styles.gradientPython}`}>
                 <div className={styles.projetoIconWrapper}>
@@ -371,7 +358,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Projeto 5 - NeoMoto DevOps */}
             <div className={styles.cartaoProjetoDestaque}>
               <div className={`${styles.imagemProjetoContainer} ${styles.gradientDevOps}`}>
                 <div className={styles.projetoIconWrapper}>
@@ -405,7 +391,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Projeto 6 - CP06 DevOps */}
             <div className={styles.cartaoProjetoDestaque}>
               <div className={`${styles.imagemProjetoContainer} ${styles.gradientCloud}`}>
                 <div className={styles.projetoIconWrapper}>
@@ -439,7 +424,6 @@ export default function Home() {
 
           </div>
           
-          {/* Comentário sobre novos projetos */}
           <div className={styles.comentarioProjetos}>
             <p>
               Estou constantemente produzindo novos projetos para aprimorar minhas habilidades. 
