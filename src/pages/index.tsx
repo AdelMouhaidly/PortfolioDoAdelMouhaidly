@@ -226,11 +226,10 @@ export default function Home() {
           <div className="space-y-4 text-[0.95rem] text-[var(--muted-text-color)]">
             <p>
               Olá! Meu nome é <strong>Adel Mouhaidly</strong>, sou{" "}
-              <strong>desenvolvedor Full Stack</strong> com foco atual em{" "}
-              <strong>front-end</strong>. Estou cursando{" "}
-              <strong>Análise e Desenvolvimento de Sistemas</strong> na{" "}
-              <strong>FIAP</strong>, onde tenho contato constante com projetos
-              práticos e trabalho em equipe.
+              <strong>formado em Análise e Desenvolvimento de Sistemas</strong>{" "}
+              pela <strong>FIAP</strong> e <strong>desenvolvedor Full Stack</strong>{" "}
+              com foco atual em <strong>front-end</strong>. Na formação tive
+              contato constante com projetos práticos e trabalho em equipe.
             </p>
             <p>
               No dia a dia estudo e construo interfaces utilizando{" "}
@@ -298,8 +297,8 @@ export default function Home() {
             Minhas habilidades
           </h2>
           <p className="mb-6 text-sm text-[var(--muted-text-color)]">
-            Tecnologias que já utilizei em projetos, estudos e atividades da
-            faculdade.
+            Tecnologias que já utilizei em projetos, estudos e atividades na FIAP
+            e em iniciativas pessoais.
           </p>
 
           <div className="grid grid-cols-2 gap-5 text-sm sm:grid-cols-3 md:grid-cols-4">

@@ -12,7 +12,9 @@ Portfólio pessoal em Next.js e TypeScript, com projetos, habilidades e formulá
 
 ## Sobre
 
-Sou **Adel Mouhaidly**, estudante de **Análise e Desenvolvimento de Sistemas** na **FIAP** (Campus Aclimação). Foco em **desenvolvimento Full Stack**, com ênfase em **front-end** (React, Next.js, TypeScript) e interesse em back-end e DevOps. Busco a primeira oportunidade como desenvolvedor para aprender em equipe e contribuir com o que já construí em projetos acadêmicos e pessoais.
+Sou **Adel Mouhaidly**, **formado em Análise e Desenvolvimento de Sistemas** pela **FIAP**, e **desenvolvedor Full Stack** com foco atual em **front-end**. No dia a dia estudo e construo interfaces com **React**, **Next.js** e **TypeScript**, além de explorar **Java**, **Python**, bancos de dados e conceitos de **DevOps**. Valorizo código limpo, organização e o impacto real das soluções.
+
+Ainda não tenho experiência profissional formal na área; desenvolvi projetos acadêmicos e pessoais que formaram uma base sólida. Busco a **primeira oportunidade** como desenvolvedor para aprender com um time mais experiente e contribuir com o que já sei.
 
 ---
 
