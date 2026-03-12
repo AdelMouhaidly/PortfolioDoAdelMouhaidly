@@ -38,11 +38,11 @@ export default async function handler(
   }
 
   try {
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
       to: process.env.RESEND_TO_EMAIL || "adelmouhaidly6@gmail.com",
       subject: `Contato pelo portfólio - ${name || "Interessado(a)"}`,
-      reply_to: email,
+      replyTo: email,
       text: [
         `Nome: ${name || "não informado"}`,
         `Email do contato: ${email}`,
