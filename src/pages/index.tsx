@@ -1,10 +1,157 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/portfolio.module.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Head from "next/head";
+import Image from "next/image";
+import { FormEvent, useEffect } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+const skills = [
+  // Frontend
+  { name: "HTML", img: "/html.png", level: "Avançado" },
+  { name: "CSS", img: "/css.png", level: "Avançado" },
+  { name: "JavaScript", img: "/javascripticon.png", level: "Intermediário" },
+  { name: "TypeScript", img: "/typescript.png", level: "Intermediário" },
+  { name: "React JS", img: "/react.png", level: "Intermediário" },
+  { name: "Next.js", img: "/next.svg", level: "Intermediário" },
+  { name: "React Native", img: "/reactnative.png", level: "Intermediário" },
+  // Backend & dados
+  { name: "Java", img: "/java.png", level: "Intermediário" },
+  { name: "Spring Boot", img: "/java.png", level: "Intermediário" },
+  { name: "Python", img: "/python.png", level: "Básico" },
+  { name: "FastAPI", img: "/python.png", level: "Básico" },
+  { name: "SQL", img: "/sql.png", level: "Intermediário" },
+  // DevOps & ferramentas
+  { name: "Git", img: "/git.png", level: "Intermediário" },
+  { name: "DevOps", img: "/devops.png", level: "Básico" },
+  { name: "Docker", img: "/docker.png", level: "Básico" },
+  { name: "CI/CD", img: "/vercel.svg", level: "Básico" },
+];
+
+const projects = [
+  {
+    title: "SkillBridge",
+    tags: ["React Native", "Java Spring", "Python", "AI"],
+    description:
+      "Plataforma de capacitação profissional voltada à transição energética e requalificação de talentos, com recomendações personalizadas usando IA generativa.",
+    problem:
+      "Empresas e profissionais têm dificuldade em mapear quais competências são necessárias para a transição energética e como se requalificar de forma direcionada.",
+    solution:
+      "Criei um app mobile e backend que sugerem trilhas de aprendizado personalizadas usando IA generativa, conectando habilidades atuais do usuário com as competências exigidas pelo mercado.",
+    link: "https://github.com/AdelMouhaidly/SkillBridgeMobileGS2",
+  },
+  {
+    title: "ChargeMap - Next.js",
+    tags: ["Next.js", "TypeScript", "Full Stack"],
+    description:
+      "Aplicação web para localizar e reservar pontos de carregamento para veículos elétricos, com login, planos de assinatura e integração com banco SQL.",
+    problem:
+      "Motoristas de veículos elétricos precisam encontrar rapidamente pontos de carga confiáveis, evitando chegar em estações lotadas ou fora de operação.",
+    solution:
+      "Desenvolvi uma aplicação full stack em Next.js com autenticação, planos de assinatura e reserva de estações, persistindo dados em um banco SQL para garantir histórico e previsibilidade.",
+    link: "https://github.com/AdelMouhaidly/ChargeMapProject",
+  },
+  {
+    title: "NeoMoto Challenge",
+    tags: ["React Native", "TypeScript", "Mobile"],
+    description:
+      "App mobile focado em experiência do usuário e performance para o desafio NeoMoto, integrando APIs externas.",
+    problem:
+      "O desafio pedia um app de mobilidade com navegação fluida e informações em tempo real, sem sacrificar desempenho em dispositivos modestos.",
+    solution:
+      "Implementei um app em React Native com navegação otimizada, consumo eficiente de APIs externas e foco em UI responsiva, reduzindo carregamentos desnecessários.",
+    link: "https://github.com/AdelMouhaidly/Challenge4NeoMoto",
+  },
+  {
+    title: "ChargeMap - Python",
+    tags: ["Python", "SQL", "Backend"],
+    description:
+      "Sistema em Python com banco SQL para apoiar motoristas de veículos elétricos com login, reservas, estimativa de tempo e planos.",
+    problem:
+      "Era necessário um backend robusto para sustentar regras de negócio do ChargeMap mesmo sem a interface web, centralizando lógica de reservas e cálculos.",
+    solution:
+      "Modelei a lógica de reservas, planos e estimativas em Python com banco SQL, separando camadas de persistência e regras de negócio para facilitar manutenção e integrações futuras.",
+    link: "https://github.com/AdelMouhaidly/ChargeMapPython",
+  },
+  {
+    title: "NeoMoto DevOps",
+    tags: ["DevOps", "CI/CD", "Docker"],
+    description:
+      "Pipeline de CI/CD e automações com Docker para o projeto NeoMoto, cobrindo build, testes e deploy.",
+    problem:
+      "O projeto NeoMoto precisava de um fluxo confiável de build, testes e deploy para evitar erros manuais e garantir entregas consistentes.",
+    solution:
+      "Configurei pipelines de CI/CD com Docker, automatizando build, execução de testes e deploy, reduzindo riscos de falhas manuais e deixando o ciclo de entrega mais previsível.",
+    link: "https://github.com/AdelMouhaidly/NeoMotoDevops",
+  },
+  {
+    title: "CP06 DevOps",
+    tags: ["DevOps", "Automação", "Cloud"],
+    description:
+      "Checkpoint de DevOps com foco em automação de infraestrutura, configuração e deployment em cloud.",
+    problem:
+      "A disciplina exigia demonstrar domínio em automação de infraestrutura e deploy em nuvem, reduzindo atividades manuais de configuração.",
+    solution:
+      "Implementei scripts e pipelines de automação para provisionar recursos, configurar ambiente e realizar deploy em cloud, documentando o fluxo para facilitar replicação.",
+    link: "https://github.com/AdelMouhaidly/Cp06Devops",
+  },
+];
+
+const CONTACT_EMAIL = "adelmouhaidly6@gmail.com";
 
 export default function Home() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const elements = document.querySelectorAll<HTMLElement>(".js-reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    if (!email || !message) {
+      alert("Por favor, preencha pelo menos email e mensagem.");
+      return;
+    }
+
+    const subject = encodeURIComponent(
+      `Contato pelo portfólio - ${name || "Interessado(a)"}`
+    );
+    const bodyLines = [
+      `Nome: ${name || "não informado"}`,
+      `Email: ${email}`,
+      "",
+      "Mensagem:",
+      message,
+    ];
+    const body = encodeURIComponent(bodyLines.join("\n"));
+
+    // Abre o Gmail no navegador (nova aba com rascunho preenchido)
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${subject}&body=${body}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+
+    event.currentTarget.reset();
+  };
+
   return (
     <>
       <Head>
@@ -13,422 +160,346 @@ export default function Home() {
         <link rel="icon" href="/icon.webp" />
       </Head>
 
-      <main className={styles.container}>
+      <main className="min-h-screen bg-[var(--bg-color)] text-[var(--text-color)]">
         <Header />
 
-        <section className={`${styles.hero} ${styles.fadeIn}`}>
-          <div className={styles.textoHero}>
-            <h1>
-              Transformar ideias em <br />
-              produtos da <span className={styles.destaque}>vida real</span> <br />
-              é minha missão.
-            </h1>
-            <a href="#projetos" className={styles.botaoCta}>
-              Ver Projetos
-            </a>
-          </div>
-          <div className={styles.imagemHero}>
-            <Image
-              src="/Adel.png"
-              alt="Foto do desenvolvedor"
-              width={400}
-              height={400}
-              className={styles.fotoPerfil}
-            />
-          </div>
-        </section>
+        {/* Hero */}
+        <section className="js-reveal border-b border-[var(--border-color)] bg-[var(--surface-color)]">
+          <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-10 px-4 pt-20 pb-16 md:flex-row md:pt-24">
+            <div className="space-y-5 text-center md:max-w-xl md:text-left">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--muted-text-color)]">
+                Portfólio · Desenvolvimento de software
+              </p>
+              <h1 className="text-3xl font-semibold leading-tight text-[var(--text-color)] sm:text-4xl md:text-5xl">
+                Transformar ideias em
+                <br />
+                produtos da{" "}
+                <span className="text-[var(--accent-color)]">vida real</span>
+                <br />
+                é minha missão.
+              </h1>
+              <p className="text-sm text-[var(--muted-text-color)]">
+                Desenvolvedor Full Stack em início de carreira, com foco em
+                front-end usando React e Next.js e interesse em back-end e
+                DevOps. Gosto de criar interfaces simples, claras e objetivas.
+              </p>
 
-        <section id="sobre" className={styles.secao}>
-          <h2 className={styles.tituloSecao}>Sobre Mim</h2>
-          <div className={styles.sobreContainer}>
-            <div className={styles.sobreTexto}>
-              <p>
-                Olá! Meu nome é <strong>Adel Mouhaidly</strong>, sou estudante de <strong>Análise e Desenvolvimento de Sistemas</strong> e estou atualmente cursando o <strong>terceiro semestre</strong> na <strong>Universidade FIAP</strong>, campus Aclimação. Minha paixão pela tecnologia me impulsiona a buscar 
-                constantemente novos desafios e aprimorar minhas habilidades.
-              </p>
-              <p>
-                Estou me especializando na área de <strong>desenvolvimento Full Stack</strong>, com foco principal no <strong>Front-End</strong>. Tenho sólidos conhecimentos em <strong>React</strong> e <strong>Next.js</strong>, criando 
-                interfaces modernas, responsivas e intuitivas. Além disso, possuo familiaridade com outras áreas, como <strong>Back-End</strong> e bancos de dados, o que me permite contribuir de maneira integrada em projetos completos.
-              </p>
-              <p>
-                Estou sempre <strong>disposto a aprender</strong> e me desenvolver ainda mais como profissional. Busco oportunidades 
-                onde possa aplicar minhas habilidades e colaborar em projetos que gerem impacto positivo.
-              </p>
+              <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
+                <a
+                  href="#projetos"
+                  className="inline-flex items-center gap-2 rounded-md border border-[var(--accent-color)] px-5 py-2.5 text-sm font-medium text-[var(--accent-color)] transition-colors hover:bg-[var(--accent-color)] hover:text-white"
+                >
+                  Ver projetos
+                </a>
+                <a
+                  href="/adel-mouhaidly-cv.pdf"
+                  download
+                  className="inline-flex items-center gap-2 rounded-md bg-[var(--accent-color)] px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-transform transition-colors hover:-translate-y-0.5 hover:bg-blue-500"
+                >
+                  Baixar CV
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div className={styles.experienciaContainer}>
-            <h3 className={styles.subtituloSecaoInterno}>Experiência Profissional</h3>
-            <div className={styles.experienciaCard}>
-              <p>
-                No momento, ainda não possuo experiência profissional na área de tecnologia, mas estou <strong>em busca</strong> de uma 
-                oportunidade para ingressar no mercado. Minha dedicação em aprender e minha paixão por tecnologia são os pilares 
-                que me movem a buscar sempre o <strong>meu melhor</strong>.
-              </p>
-              <p>
-                Tenho investido meu tempo em cursos, projetos pessoais e estudos constantes para me tornar um profissional 
-                competente e preparado. Cada projeto é uma nova chance de aprender e evoluir, e eu estou pronto para enfrentar 
-                desafios e contribuir com o sucesso de uma equipe ou empresa.
-              </p>
-            </div>
-          </div>
-          
-          <p className={styles.mensagemFinal}>
-            &quot;O conhecimento é infinito, e o desejo de aprender é o que nos leva além. Estou preparado para crescer, colaborar 
-            e fazer a diferença no mundo da tecnologia.&quot;
-          </p>
-        </section>
-
-        <section id="habilidades" className={styles.secao}>
-  <h2 className={styles.tituloSecao}>Minhas Habilidades</h2>
-  <div className={styles.skillsContainer}>
-    <div className={styles.skillItem}>
-      <Image src="/html.png" alt="HTML" width={50} height={50} />
-      <span>HTML</span>
-      <p className={styles.skillLevel}>Avançado</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/css.png" alt="CSS" width={50} height={50} />
-      <span>CSS</span>
-      <p className={styles.skillLevel}>Avançado</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/javascripticon.png" alt="JavaScript" width={50} height={50} />
-      <span>JavaScript</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/react.png" alt="React" width={50} height={50} />
-      <span>React JS</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/next.png" alt="Next.js" width={50} height={50} />
-      <span>Next.js</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/git.png" alt="Git" width={50} height={50} />
-      <span>Git</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/typescript.png" alt="TypeScript" width={50} height={50} />
-      <span>TypeScript</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/java.webp" alt="Java" width={50} height={50} />
-      <span>Java</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/python.png" alt="Python" width={50} height={50} />
-      <span>Python</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/sql.png" alt="SQL" width={50} height={50} />
-      <span>SQL</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/git.png" alt="DevOps" width={50} height={50} />
-      <span>DevOps</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/git.png" alt="Docker" width={50} height={50} />
-      <span>Docker</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/git.png" alt="CI/CD" width={50} height={50} />
-      <span>CI/CD</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/react.png" alt="React Native" width={50} height={50} />
-      <span>React Native</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/next.png" alt="Spring Boot" width={50} height={50} />
-      <span>Spring Boot</span>
-      <p className={styles.skillLevel}>Intermediário</p>
-    </div>
-    <div className={styles.skillItem}>
-      <Image src="/python.png" alt="FastAPI" width={50} height={50} />
-      <span>FastAPI</span>
-      <p className={styles.skillLevel}>Básico</p>
-    </div>
-  </div>
-</section>
-
-<section id="contato" className={styles.secao}>
-          <h2 className={styles.tituloSecao}>Entre em Contato</h2>
-          <p className={styles.subtituloSecao}>
-            Estou sempre aberto a novas oportunidades e colaborações. Vamos conversar!
-          </p>
-          <div className={styles.contatoContainer}>
-            <div className={styles.contatoItem}>
-              <div className={styles.contatoIconWrapper}>
-                <svg className={styles.contatoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <div className={styles.contatoInfo}>
-                <span className={styles.contatoLabel}>Email</span>
-                <a href="mailto:adelmouhaidly6@gmail.com" className={styles.contatoLink}>adelmouhaidly6@gmail.com</a>
-              </div>
-            </div>
-            <div className={styles.contatoItem}>
-              <div className={styles.contatoIconWrapper}>
-                <svg className={styles.contatoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <div className={styles.contatoInfo}>
-                <span className={styles.contatoLabel}>Telefone</span>
-                <span className={styles.contatoTexto}>(11) 91587-5111</span>
-              </div>
-            </div>
-            <div className={styles.contatoItem}>
-              <div className={styles.contatoIconWrapper}>
-                <svg className={styles.contatoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 8C16 10.2091 14.2091 12 12 12C9.79086 12 8 10.2091 8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8Z" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M20 8V14M17 11H23" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <div className={styles.contatoInfo}>
-                <span className={styles.contatoLabel}>LinkedIn</span>
-                <a href="https://www.linkedin.com/in/adelmouhaidly" target="_blank" rel="noopener noreferrer" className={styles.contatoLink}>linkedin.com/in/adelmouhaidly</a>
-              </div>
-            </div>
-            <div className={styles.contatoItem}>
-              <div className={styles.contatoIconWrapper}>
-                <svg className={styles.contatoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 19C4 20.5 4 16.5 2 16M16 22V18.13C16.0375 17.6532 15.9731 17.1738 15.811 16.7238C15.6489 16.2738 15.3929 15.8634 15.06 15.52C18.2 15.17 21.5 13.98 21.5 8.52C21.4997 7.12383 20.9627 5.7812 20 4.77C20.4559 3.54851 20.4236 2.19835 19.91 1C19.91 1 18.73 0.650001 16 2.48C13.708 1.85882 11.292 1.85882 9 2.48C6.27 0.650001 5.09 1 5.09 1C4.57638 2.19835 4.54414 3.54851 5 4.77C4.03013 5.7887 3.49252 7.14346 3.5 8.55C3.5 13.97 6.8 15.16 9.94 15.55C9.611 15.89 9.35726 16.2954 9.19531 16.7399C9.03335 17.1844 8.96681 17.6581 9 18.13V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <div className={styles.contatoInfo}>
-                <span className={styles.contatoLabel}>GitHub</span>
-                <a href="https://github.com/AdelMouhaidly" target="_blank" rel="noopener noreferrer" className={styles.contatoLink}>github.com/AdelMouhaidly</a>
-              </div>
+            <div className="flex justify-center">
+              <Image
+                src="/Adel.png"
+                alt="Foto do desenvolvedor"
+                width={320}
+                height={320}
+                className="h-auto max-w-[260px] rounded-2xl border border-[var(--border-color)] object-cover"
+              />
             </div>
           </div>
         </section>
 
-        <section id="projetos" className={`${styles.secao} ${styles.fadeIn}`}>
-          <h2 className={styles.tituloSecao}>Projetos em Destaque</h2>
-          <p className={styles.subtituloSecao}>
-            Alguns dos meus principais projetos que demonstram minhas habilidades e experiência
+        {/* Sobre */}
+        <section
+          id="sobre"
+          className="js-reveal mx-auto mt-16 w-full max-w-5xl border-l-4 border-[var(--accent-color-soft)] bg-transparent px-6 py-10 sm:px-8"
+        >
+          <h2 className="mb-3 text-2xl font-semibold">Sobre mim</h2>
+          <p className="mb-6 text-sm uppercase tracking-[0.2em] text-[var(--muted-text-color)]">
+            Quem eu sou, como trabalho e onde já atuei
           </p>
-          <div className={styles.gridProjetosDestaque}>
-            <div className={styles.cartaoProjetoDestaque}>
-              <div className={`${styles.imagemProjetoContainer} ${styles.gradientAI}`}>
-                <div className={styles.projetoIconWrapper}>
-                  <svg className={styles.projetoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div className={styles.overlayProjeto}>
-                  <span className={styles.tagProjeto}>React Native</span>
-                  <span className={styles.tagProjeto}>Java Spring</span>
-                  <span className={styles.tagProjeto}>Python</span>
-                  <span className={styles.tagProjeto}>AI</span>
-                </div>
-              </div>
-              <div className={styles.conteudoProjeto}>
-                <h3>SkillBridge</h3>
-                <p>
-                  Plataforma inovadora de capacitação profissional voltada à transição energética e requalificação de talentos. Conecta profissionais a oportunidades de cursos e vagas sustentáveis, utilizando <strong>Inteligência Artificial Generativa (Google Gemini)</strong> para fornecer recomendações personalizadas e planos de estudos adaptados. Stack: <strong>Java Spring Boot</strong>, <strong>React Native</strong>, <strong>Python FastAPI</strong>, <strong>Oracle Database</strong>.
-                </p>
-                <div className={styles.botoesProjeto}>
-                  <a
-                    href="https://github.com/AdelMouhaidly/SkillBridgeMobileGS2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.botaoGitHub}
-                  >
-                    Ver no GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
 
-            <div className={styles.cartaoProjetoDestaque}>
-              <div className={`${styles.imagemProjetoContainer} ${styles.gradientNext}`}>
-                <div className={styles.projetoIconWrapper}>
-                  <svg className={styles.projetoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div className={styles.overlayProjeto}>
-                  <span className={styles.tagProjeto}>Next.js</span>
-                  <span className={styles.tagProjeto}>TypeScript</span>
-                  <span className={styles.tagProjeto}>Full Stack</span>
-                </div>
-              </div>
-              <div className={styles.conteudoProjeto}>
-                <h3>ChargeMap - Next.js</h3>
-                <p>
-                  Aplicação web completa que facilita a localização e roteirização de pontos de carregamento para veículos elétricos. O sistema permite reserva de 
-                  carregadores, oferece suporte emergencial com envio de carregadores portáteis e inclui tela de login integrada ao banco de dados SQL. O projeto conta com planos de assinatura e foi desenvolvido utilizando <strong>Next.js</strong> com <strong>TypeScript</strong>, garantindo performance, escalabilidade e robustez.
-                </p>
-                <div className={styles.botoesProjeto}>
-                  <a
-                    href="https://github.com/AdelMouhaidly/ChargeMapProject"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.botaoGitHub}
-                  >
-                    Ver no GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.cartaoProjetoDestaque}>
-              <div className={`${styles.imagemProjetoContainer} ${styles.gradientMobile}`}>
-                <div className={styles.projetoIconWrapper}>
-                  <svg className={styles.projetoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M12 18H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
-                <div className={styles.overlayProjeto}>
-                  <span className={styles.tagProjeto}>React Native</span>
-                  <span className={styles.tagProjeto}>TypeScript</span>
-                  <span className={styles.tagProjeto}>Mobile</span>
-                </div>
-              </div>
-              <div className={styles.conteudoProjeto}>
-                <h3>NeoMoto Challenge</h3>
-                <p>
-                  Aplicativo mobile desenvolvido em <strong>React Native</strong> para o desafio NeoMoto. Focado em experiência do usuário e performance em dispositivos móveis, o projeto demonstra habilidades avançadas em desenvolvimento mobile com <strong>TypeScript</strong>, navegação eficiente e integração com APIs externas.
-                </p>
-                <div className={styles.botoesProjeto}>
-                  <a
-                    href="https://github.com/AdelMouhaidly/Challenge4NeoMoto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.botaoGitHub}
-                  >
-                    Ver no GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.cartaoProjetoDestaque}>
-              <div className={`${styles.imagemProjetoContainer} ${styles.gradientPython}`}>
-                <div className={styles.projetoIconWrapper}>
-                  <svg className={styles.projetoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 7V17C4 18.1046 4.89543 19 6 19H18C19.1046 19 20 18.1046 20 17V7" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M9 5H15M12 5V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
-                </div>
-                <div className={styles.overlayProjeto}>
-                  <span className={styles.tagProjeto}>Python</span>
-                  <span className={styles.tagProjeto}>SQL</span>
-                  <span className={styles.tagProjeto}>Backend</span>
-                </div>
-              </div>
-              <div className={styles.conteudoProjeto}>
-                <h3>ChargeMap - Python</h3>
-                <p>
-                  Sistema interativo desenvolvido em <strong>Python</strong> com integração ao banco de dados <strong>SQL</strong> para auxiliar motoristas de veículos elétricos. O sistema conta com tela de login autenticada e funcionalidades essenciais: encontrar 
-                  pontos de carregamento próximos, fazer reservas, estimar tempo de carregamento, sistema de pagamento integrado e visualização de planos disponíveis. Desenvolvido com foco em eficiência, usabilidade e segurança.
-                </p>
-                <div className={styles.botoesProjeto}>
-                  <a
-                    href="https://github.com/AdelMouhaidly/ChargeMapPython"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.botaoGitHub}
-                  >
-                    Ver no GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.cartaoProjetoDestaque}>
-              <div className={`${styles.imagemProjetoContainer} ${styles.gradientDevOps}`}>
-                <div className={styles.projetoIconWrapper}>
-                  <svg className={styles.projetoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M12 1V5M12 19V23M23 12H19M5 12H1" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M18.36 5.64L15.54 8.46M8.46 15.54L5.64 18.36M18.36 18.36L15.54 15.54M8.46 8.46L5.64 5.64" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
-                <div className={styles.overlayProjeto}>
-                  <span className={styles.tagProjeto}>DevOps</span>
-                  <span className={styles.tagProjeto}>CI/CD</span>
-                  <span className={styles.tagProjeto}>Docker</span>
-                </div>
-              </div>
-              <div className={styles.conteudoProjeto}>
-                <h3>NeoMoto DevOps</h3>
-                <p>
-                  Implementação completa de pipeline <strong>DevOps</strong> para o projeto NeoMoto. Inclui configuração de <strong>CI/CD</strong>, containerização com <strong>Docker</strong>, automação de deploy e monitoramento. Demonstra práticas modernas de DevOps, incluindo integração contínua, entrega contínua e infraestrutura como código.
-                </p>
-                <div className={styles.botoesProjeto}>
-                  <a
-                    href="https://github.com/AdelMouhaidly/NeoMotoDevops"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.botaoGitHub}
-                  >
-                    Ver no GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.cartaoProjetoDestaque}>
-              <div className={`${styles.imagemProjetoContainer} ${styles.gradientCloud}`}>
-                <div className={styles.projetoIconWrapper}>
-                  <svg className={styles.projetoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 10H19C20.6569 10 22 11.3431 22 13C22 14.6569 20.6569 16 19 16H18M18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10M18 10C18 10 18 10 18 10ZM6 10H5C3.34315 10 2 11.3431 2 13C2 14.6569 3.34315 16 5 16H6M6 10C6 10 6 10 6 10ZM12 20V14M9 17L12 20L15 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div className={styles.overlayProjeto}>
-                  <span className={styles.tagProjeto}>DevOps</span>
-                  <span className={styles.tagProjeto}>Automação</span>
-                  <span className={styles.tagProjeto}>Cloud</span>
-                </div>
-              </div>
-              <div className={styles.conteudoProjeto}>
-                <h3>CP06 DevOps</h3>
-                <p>
-                  Checkpoint de DevOps demonstrando competências em automação de infraestrutura, gerenciamento de configuração e práticas de deployment. Implementa soluções escaláveis utilizando ferramentas modernas de <strong>DevOps</strong>, com foco em eficiência operacional e confiabilidade de sistemas.
-                </p>
-                <div className={styles.botoesProjeto}>
-                  <a
-                    href="https://github.com/AdelMouhaidly/Cp06Devops"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.botaoGitHub}
-                  >
-                    Ver no GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          
-          <div className={styles.comentarioProjetos}>
+          <div className="space-y-4 text-[0.95rem] text-[var(--muted-text-color)]">
             <p>
-              Estou constantemente produzindo novos projetos para aprimorar minhas habilidades. 
-              Acompanhe meu progresso no <strong>GitHub</strong>.
+              Olá! Meu nome é <strong>Adel Mouhaidly</strong>, sou{" "}
+              <strong>desenvolvedor Full Stack</strong> com foco atual em{" "}
+              <strong>front-end</strong>. Estou cursando{" "}
+              <strong>Análise e Desenvolvimento de Sistemas</strong> na{" "}
+              <strong>FIAP</strong>, onde tenho contato constante com projetos
+              práticos e trabalho em equipe.
             </p>
+            <p>
+              No dia a dia estudo e construo interfaces utilizando{" "}
+              <strong>React</strong>, <strong>Next.js</strong> e{" "}
+              <strong>TypeScript</strong>, além de explorar{" "}
+              <strong>Java</strong>, <strong>Python</strong>, bancos de dados e
+              conceitos de <strong>DevOps</strong>. Gosto de código limpo,
+              organização e de entender o impacto real das soluções.
+            </p>
+            <p>
+              Ainda não tenho experiência profissional formal na área, mas já
+              desenvolvi projetos acadêmicos e pessoais que me ajudaram a criar
+              uma base sólida. Estou ativamente em busca da{" "}
+              <strong>primeira oportunidade</strong> como desenvolvedor para
+              aprender com um time mais experiente e contribuir com o que já
+              sei.
+            </p>
+          </div>
+
+          <div className="mt-8 space-y-3 rounded-xl bg-[var(--surface-color)]/60 p-5 text-[0.95rem] text-[var(--muted-text-color)] shadow-sm">
+            <h3 className="text-lg font-semibold text-[var(--text-color)]">
+              Experiência
+            </h3>
+            <p>
+              No momento minha experiência é focada em{" "}
+              <strong>projetos acadêmicos, desafios e iniciativas pessoais</strong>,
+              onde atuo como desenvolvedor responsável por ir do desenho da
+              solução até o deploy.
+            </p>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                <strong>SkillBridge</strong> — plataforma mobile e backend para
+                capacitação profissional, integrando <strong>React Native</strong>,{" "}
+                <strong>Java Spring</strong>, <strong>Python</strong> e uso de{" "}
+                <strong>IA generativa</strong>.
+              </li>
+              <li>
+                <strong>ChargeMap</strong> — aplicações em{" "}
+                <strong>Next.js</strong> e <strong>Python</strong> focadas em rotas
+                e reservas de pontos de carga para veículos elétricos, com{" "}
+                <strong>banco SQL</strong> e autenticação.
+              </li>
+              <li>
+                <strong>NeoMoto</strong> — desafios em <strong>React Native</strong>{" "}
+                e <strong>DevOps</strong>, trabalhando com <strong>Docker</strong> e{" "}
+                <strong>pipelines de CI/CD</strong> para automatizar build, testes
+                e deploy.
+              </li>
+            </ul>
+            <p>
+              Em todos esses projetos procuro aplicar boas práticas como{" "}
+              <strong>organização de pastas</strong>, <strong>commits claros</strong>{" "}
+              e preocupação com <strong>experiência do usuário</strong>, para estar
+              preparado para um ambiente profissional.
+            </p>
+          </div>
+        </section>
+
+        {/* Habilidades */}
+        <section
+          id="habilidades"
+          className="js-reveal mx-auto mt-16 w-full max-w-5xl rounded-2xl border border-[var(--border-color)] bg-[var(--surface-color)] px-6 py-10 sm:px-8"
+        >
+          <h2 className="mb-2 text-2xl font-semibold">
+            Minhas habilidades
+          </h2>
+          <p className="mb-6 text-sm text-[var(--muted-text-color)]">
+            Tecnologias que já utilizei em projetos, estudos e atividades da
+            faculdade.
+          </p>
+
+          <div className="grid grid-cols-2 gap-5 text-sm sm:grid-cols-3 md:grid-cols-4">
+            {skills.map((skill) => (
+              <div
+                key={skill.name}
+                className="group flex w-full flex-col items-start rounded-2xl border border-[var(--border-color)] bg-[var(--surface-color)] px-4 py-5 shadow-sm transition-transform transition-shadow hover:-translate-y-1 hover:border-[var(--accent-color)] hover:shadow-[0_18px_45px_rgba(0,0,0,0.35)]"
+              >
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent-color-soft)] shadow-inner transition-transform group-hover:scale-110">
+                  <Image
+                    src={skill.img}
+                    alt={skill.name}
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
+                  />
+                </div>
+                <span className="text-[0.9rem] font-semibold">
+                  {skill.name}
+                </span>
+                <span className="mt-1 text-[0.75rem] uppercase tracking-wide text-[var(--muted-text-color)]">
+                  {skill.level}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Projetos */}
+        <section
+          id="projetos"
+          className="js-reveal mx-auto mt-16 mb-12 w-full max-w-5xl border-l-4 border-[var(--accent-color-soft)] bg-transparent px-6 py-10 sm:px-8"
+        >
+          <h2 className="mb-2 text-center text-2xl font-semibold">
+            Projetos em destaque
+          </h2>
+          <p className="mb-8 text-center text-sm text-[var(--muted-text-color)]">
+            Alguns projetos que mostram o tipo de problema que gosto de
+            resolver.
+          </p>
+
+          <div className="space-y-6">
+            {projects.map((project) => (
+              <article
+                key={project.title}
+                className="js-reveal flex flex-col gap-3 rounded-xl border border-[var(--border-color)] bg-[var(--surface-color)] p-4"
+              >
+                <div className="flex flex-wrap gap-2 text-[0.7rem]">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-[var(--accent-color-soft)] px-2 py-0.5 text-[var(--accent-color)]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h3 className="text-lg font-semibold">{project.title}</h3>
+                <p className="text-sm text-[var(--muted-text-color)]">
+                  {project.description}
+                </p>
+                <div className="mt-1 space-y-1 text-xs text-[var(--muted-text-color)]">
+                  <p>
+                    <strong>Problema:</strong> {project.problem}
+                  </p>
+                  <p>
+                    <strong>Minha solução:</strong> {project.solution}
+                  </p>
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-flex w-fit text-sm font-medium text-[var(--accent-color)]"
+                >
+                  Ver no GitHub
+                </a>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-8 text-center text-sm text-[var(--muted-text-color)]">
+            Sempre que possível publico novos projetos e experimentos no meu{" "}
+            <a
+              href="https://github.com/AdelMouhaidly"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--accent-color)]"
+            >
+              GitHub
+            </a>
+            .
+          </p>
+        </section>
+
+        {/* Contato */}
+        <section
+          id="contato"
+          className="js-reveal mx-auto mt-12 mb-12 w-full max-w-5xl rounded-2xl border border-[var(--border-color)] bg-[var(--surface-color)] px-6 py-10 sm:px-8"
+        >
+          <div className="grid gap-10 md:grid-cols-2">
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold">Entre em contato</h2>
+              <p className="text-sm text-[var(--muted-text-color)]">
+                Se você gostou dos projetos e acredita que eu posso ajudar seu
+                time ou empresa, vamos conversar. Costumo responder com atenção
+                às mensagens, explicando como posso contribuir e quais são os
+                próximos passos.
+              </p>
+              <ul className="space-y-2 text-sm text-[var(--muted-text-color)]">
+                <li>
+                  <strong>Email:</strong>{" "}
+                  <a
+                    href="mailto:adelmouhaidly6@gmail.com"
+                    className="text-[var(--accent-color)]"
+                  >
+                    adelmouhaidly6@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <strong>Telefone:</strong> (11) 91587-5111
+                </li>
+                <li>
+                  <strong>LinkedIn:</strong>{" "}
+                  <a
+                    href="https://www.linkedin.com/in/adelmouhaidly"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--accent-color)]"
+                  >
+                    linkedin.com/in/adelmouhaidly
+                  </a>
+                </li>
+                <li>
+                  <strong>GitHub:</strong>{" "}
+                  <a
+                    href="https://github.com/AdelMouhaidly"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--accent-color)]"
+                  >
+                    github.com/AdelMouhaidly
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <form
+              onSubmit={handleContactSubmit}
+              className="space-y-4 rounded-xl bg-[var(--surface-muted-color)] px-4 py-5 text-sm shadow-inner"
+            >
+              <div className="flex flex-col gap-1">
+                <label htmlFor="name" className="font-medium">
+                  Nome
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  className="rounded-md border border-[var(--border-color)] bg-[var(--surface-color)] px-3 py-2 outline-none ring-[var(--accent-color)] focus:ring-1"
+                  placeholder="Como devo te chamar?"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="email" className="font-medium">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  className="rounded-md border border-[var(--border-color)] bg-[var(--surface-color)] px-3 py-2 outline-none ring-[var(--accent-color)] focus:ring-1"
+                  placeholder="Seu melhor email para resposta"
+                  required
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="message" className="font-medium">
+                  Mensagem
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  className="resize-none rounded-md border border-[var(--border-color)] bg-[var(--surface-color)] px-3 py-2 outline-none ring-[var(--accent-color)] focus:ring-1"
+                  placeholder="Conte um pouco sobre a vaga, projeto ou dúvida."
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="mt-2 inline-flex w-full items-center justify-center rounded-md bg-[var(--accent-color)] px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-transform transition-colors hover:-translate-y-0.5 hover:bg-blue-500"
+              >
+                Enviar mensagem
+              </button>
+              <p className="text-[0.7rem] text-[var(--muted-text-color)]">
+                Ao clicar, abre uma aba com o email, assunto e mensagem já
+                preenchidos.
+              </p>
+            </form>
           </div>
         </section>
 

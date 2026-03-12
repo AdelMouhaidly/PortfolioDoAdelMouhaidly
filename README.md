@@ -1,276 +1,139 @@
-# Portfólio Profissional - Adel Mouhaidly
+# Portfólio - Adel Mouhaidly
 
 [![Vercel Deploy](https://img.shields.io/badge/Vercel-Deploy-black?style=for-the-badge&logo=vercel)](https://portfolio-do-adel-mouhaidly-7ide.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
-> Meu portfólio pessoal desenvolvido com Next.js, TypeScript e CSS Modules, apresentando meus projetos, habilidades e experiência como desenvolvedor Full Stack.
+Portfólio pessoal em Next.js e TypeScript, com projetos, habilidades e formulário de contato. Layout responsivo e tema claro/escuro.
 
-## Acesse o Portfólio
-
-**[https://portfolio-do-adel-mouhaidly-7ide.vercel.app/](https://portfolio-do-adel-mouhaidly-7ide.vercel.app/)**
+**Acesso:** [https://portfolio-do-adel-mouhaidly-7ide.vercel.app/](https://portfolio-do-adel-mouhaidly-7ide.vercel.app/)
 
 ---
 
-## Sobre Mim
+## Sobre
 
-Olá! Sou **Adel Mouhaidly**, estudante de **Análise e Desenvolvimento de Sistemas** no terceiro semestre da **Universidade FIAP** (Campus Aclimação). Minha paixão pela tecnologia me impulsiona a buscar constantemente novos desafios e aprimorar minhas habilidades.
-
-### Foco Profissional
-Estou me especializando em **desenvolvimento Full Stack**, com foco principal no **Front-End**. Tenho sólidos conhecimentos em **React** e **Next.js**, criando interfaces modernas, responsivas e intuitivas. Além disso, possuo familiaridade com **Back-End** e bancos de dados, o que me permite contribuir de maneira integrada em projetos completos.
-
-### Objetivos
-Busco oportunidades onde possa aplicar minhas habilidades e colaborar em projetos que gerem impacto positivo. Estou sempre disposto a aprender e me desenvolver ainda mais como profissional.
-
-> *"O conhecimento é infinito, e o desejo de aprender é o que nos leva além. Estou preparado para crescer, colaborar e fazer a diferença no mundo da tecnologia."*
+Sou **Adel Mouhaidly**, estudante de **Análise e Desenvolvimento de Sistemas** na **FIAP** (Campus Aclimação). Foco em **desenvolvimento Full Stack**, com ênfase em **front-end** (React, Next.js, TypeScript) e interesse em back-end e DevOps. Busco a primeira oportunidade como desenvolvedor para aprender em equipe e contribuir com o que já construí em projetos acadêmicos e pessoais.
 
 ---
 
-## Tecnologias Utilizadas
+## Tecnologias do projeto
 
-Este portfólio foi desenvolvido com as seguintes tecnologias modernas:
+- **Next.js 15** – Framework React
+- **TypeScript** – Tipagem estática
+- **Tailwind CSS** – Estilos
+- **React 19** – Interface
 
-### Frontend
-- **Next.js 15.0** - Framework React para produção
-- **TypeScript** - Tipagem estática para JavaScript
-- **CSS Modules** - Estilização modular e isolada
-- **React 19.0** - Biblioteca JavaScript para interfaces
-
-### Design & UX
-- **CSS Grid & Flexbox** - Layout responsivo
-- **Gradientes Personalizados** - Design moderno com paleta roxa
-- **Animações CSS** - Transições suaves e efeitos hover
-- **SVG Icons** - Ícones vetoriais escaláveis
-- **Glassmorphism** - Efeitos modernos de vidro fosco
-
-### Deploy & Hospedagem
-- **Vercel** - Plataforma de deploy otimizada para Next.js
-- **CI/CD Automático** - Deploy contínuo integrado
+Deploy na **Vercel** com CI/CD integrado.
 
 ---
 
-## Características do Portfólio
+## Conteúdo do portfólio
 
-### Design Profissional
-- Interface moderna e limpa com paleta de cores preta e roxa
-- Layout totalmente responsivo para todos os dispositivos
-- Animações suaves e transições elegantes
-- Cards interativos com efeitos hover
+- **Hero** – Apresentação e botões (Ver projetos, Baixar CV)
+- **Sobre mim** – Texto e bloco de experiência (SkillBridge, ChargeMap, NeoMoto)
+- **Habilidades** – Grid de tecnologias com nível (Avançado, Intermediário, Básico)
+- **Projetos em destaque** – Projetos com problema, solução e link para o repositório
+- **Entre em contato** – Texto à esquerda e formulário à direita; ao enviar, abre uma aba do Gmail com destinatário, assunto e mensagem preenchidos
 
-### Responsividade Total
-- **Desktop**: Layout otimizado com 3 colunas
-- **Tablet**: Adaptação fluida com 2 colunas
-- **Mobile**: Design vertical otimizado
-- Breakpoints: 1200px, 1024px, 768px, 480px
-
-### Funcionalidades
-- **Hero Section**: Apresentação impactante com call-to-action
-- **Sobre Mim**: Biografia detalhada e experiência profissional
-- **Habilidades**: Grid visual com 16 tecnologias
-- **Projetos**: 6 projetos em destaque com descrições completas
-- **Contato**: Cards interativos com ícones SVG
-
-### Seções
-
-1. **Hero** - Apresentação principal com frase de impacto
-2. **Sobre Mim** - História pessoal e objetivos profissionais
-3. **Habilidades** - Stack técnico organizado por nível
-4. **Entre em Contato** - Formas de contato profissionais
-5. **Projetos em Destaque** - Portfólio de projetos principais
+Design com tema claro/escuro (toggle no header), cores sólidas e animações leves nos cards.
 
 ---
 
-## Habilidades Técnicas
+## Habilidades listadas
 
-### Front-End
-- ![HTML](https://img.shields.io/badge/HTML-Avançado-orange?style=flat-square&logo=html5)
-- ![CSS](https://img.shields.io/badge/CSS-Avançado-blue?style=flat-square&logo=css3)
-- ![JavaScript](https://img.shields.io/badge/JavaScript-Intermediário-yellow?style=flat-square&logo=javascript)
-- ![TypeScript](https://img.shields.io/badge/TypeScript-Intermediário-blue?style=flat-square&logo=typescript)
-- ![React](https://img.shields.io/badge/React-Intermediário-61DAFB?style=flat-square&logo=react)
-- ![Next.js](https://img.shields.io/badge/Next.js-Intermediário-black?style=flat-square&logo=next.js)
-- ![React Native](https://img.shields.io/badge/React_Native-Intermediário-61DAFB?style=flat-square&logo=react)
+**Front-end:** HTML, CSS, JavaScript, TypeScript, React JS, Next.js, React Native  
 
-### Back-End
-- ![Java](https://img.shields.io/badge/Java-Intermediário-red?style=flat-square&logo=java)
-- ![Spring Boot](https://img.shields.io/badge/Spring_Boot-Intermediário-6DB33F?style=flat-square&logo=spring)
-- ![Python](https://img.shields.io/badge/Python-Intermediário-3776AB?style=flat-square&logo=python)
-- ![FastAPI](https://img.shields.io/badge/FastAPI-Básico-009688?style=flat-square&logo=fastapi)
-- ![SQL](https://img.shields.io/badge/SQL-Intermediário-4479A1?style=flat-square&logo=postgresql)
+**Back-end e dados:** Java, Spring Boot, Python, FastAPI, SQL  
 
-### DevOps & Ferramentas
-- ![Git](https://img.shields.io/badge/Git-Intermediário-F05032?style=flat-square&logo=git)
-- ![DevOps](https://img.shields.io/badge/DevOps-Intermediário-0078D7?style=flat-square)
-- ![Docker](https://img.shields.io/badge/Docker-Intermediário-2496ED?style=flat-square&logo=docker)
-- ![CI/CD](https://img.shields.io/badge/CI/CD-Intermediário-2088FF?style=flat-square)
+**DevOps e ferramentas:** Git, DevOps, Docker, CI/CD  
+
+Níveis exibidos no site: Avançado, Intermediário ou Básico.
 
 ---
 
-## Projetos em Destaque
+## Projetos em destaque
 
-### 1. [SkillBridge](https://github.com/AdelMouhaidly/SkillBridgeMobileGS2)
-**React Native | Java Spring Boot | Python | AI**
+1. **SkillBridge** – Plataforma de capacitação (React Native, Java Spring, Python, IA). [Repositório](https://github.com/AdelMouhaidly/SkillBridgeMobileGS2)
+2. **ChargeMap (Next.js)** – Pontos de carregamento para veículos elétricos (Next.js, TypeScript, SQL). [Repositório](https://github.com/AdelMouhaidly/ChargeMapProject)
+3. **NeoMoto Challenge** – App mobile (React Native, TypeScript). [Repositório](https://github.com/AdelMouhaidly/Challenge4NeoMoto)
+4. **ChargeMap (Python)** – Backend em Python com SQL. [Repositório](https://github.com/AdelMouhaidly/ChargeMapPython)
+5. **NeoMoto DevOps** – Pipeline CI/CD e Docker. [Repositório](https://github.com/AdelMouhaidly/NeoMotoDevops)
+6. **CP06 DevOps** – Automação e cloud. [Repositório](https://github.com/AdelMouhaidly/Cp06Devops)
 
-Plataforma inovadora de capacitação profissional voltada à transição energética. Utiliza **Google Gemini AI** para fornecer recomendações personalizadas e planos de estudos adaptados.
-
-- Stack: Java Spring Boot, React Native, Python FastAPI, Oracle Database
-- IA Generativa para recomendações personalizadas
-- Autenticação JWT e gerenciamento de usuários
-
-### 2. [ChargeMap - Next.js](https://github.com/AdelMouhaidly/ChargeMapProject)
-**Next.js | TypeScript | Full Stack**
-
-Aplicação web completa para localização de pontos de carregamento para veículos elétricos.
-
-- Sistema de reservas e suporte emergencial
-- Integração com banco de dados SQL
-- Planos de assinatura
-
-### 3. [NeoMoto Challenge](https://github.com/AdelMouhaidly/Challenge4NeoMoto)
-**React Native | TypeScript | Mobile**
-
-Aplicativo mobile focado em experiência do usuário e performance.
-
-- Navegação eficiente
-- Integração com APIs externas
-- Interface intuitiva
-
-### 4. [ChargeMap - Python](https://github.com/AdelMouhaidly/ChargeMapPython)
-**Python | SQL | Backend**
-
-Sistema interativo com autenticação e funcionalidades completas.
-
-- Login autenticado
-- Sistema de pagamento integrado
-- Gerenciamento de reservas
-
-### 5. [NeoMoto DevOps](https://github.com/AdelMouhaidly/NeoMotoDevops)
-**DevOps | CI/CD | Docker**
-
-Pipeline DevOps completo com containerização.
-
-- Integração e entrega contínuas
-- Automação de deploy
-- Infraestrutura como código
-
-### 6. [CP06 DevOps](https://github.com/AdelMouhaidly/Cp06Devops)
-**DevOps | Automação | Cloud**
-
-Checkpoint demonstrando competências em automação de infraestrutura.
-
-- Gerenciamento de configuração
-- Práticas de deployment
-- Soluções escaláveis
+Cada projeto no site inclui descrição, problema, solução e link para o GitHub.
 
 ---
 
-## Como Executar Localmente
+## Como rodar localmente
 
-### Pré-requisitos
-- Node.js 18.x ou superior
-- npm ou yarn
+**Requisitos:** Node.js 18+ e npm (ou yarn).
 
-### Instalação
-
-1. **Clone o repositório**
+1. Clonar e entrar na pasta do projeto:
 ```bash
 git clone https://github.com/AdelMouhaidly/PorfolioAdel.git
 cd PorfolioAdel/PortfolioDoAdelMouhaidly
 ```
 
-2. **Instale as dependências**
+2. Instalar dependências:
 ```bash
 npm install
-# ou
-yarn install
 ```
 
-3. **Execute o servidor de desenvolvimento**
+3. Subir o servidor de desenvolvimento:
 ```bash
 npm run dev
-# ou
-yarn dev
 ```
 
-4. **Abra no navegador**
-```
-http://localhost:3000
-```
+4. Abrir no navegador: [http://localhost:3000](http://localhost:3000)
 
-### Scripts Disponíveis
-
+**Scripts úteis:**
 ```bash
-npm run dev      # Inicia o servidor de desenvolvimento
-npm run build    # Cria a build de produção
-npm start        # Inicia o servidor de produção
-npm run lint     # Executa o linter
+npm run dev    # Servidor de desenvolvimento
+npm run build  # Build de produção
+npm start      # Servidor de produção
+npm run lint   # Linter
 ```
 
 ---
 
-## Estrutura do Projeto
+## Estrutura principal
 
 ```
 PortfolioDoAdelMouhaidly/
-├── public/                 # Arquivos estáticos
-│   ├── Adel.png           # Foto de perfil
-│   └── *.png              # Ícones de tecnologias
+├── public/              # Arquivos estáticos (imagens, ícones, CV em PDF)
 ├── src/
-│   ├── components/        # Componentes React
-│   │   ├── Header.tsx     # Cabeçalho com navegação
-│   │   ├── Header.module.css
-│   │   ├── Footer.tsx     # Rodapé
-│   │   └── Footer.module.css
-│   ├── pages/             # Páginas Next.js
-│   │   ├── index.tsx      # Página principal
-│   │   ├── _app.tsx       # App wrapper
-│   │   └── _document.tsx  # Document customizado
-│   └── styles/            # Estilos globais
-│       ├── globals.css    # Estilos globais
-│       └── portfolio.module.css  # Estilos do portfólio
-├── next.config.ts         # Configuração Next.js
-├── tsconfig.json          # Configuração TypeScript
-├── package.json           # Dependências do projeto
-└── README.md              # Este arquivo
+│   ├── components/      # Header, Footer
+│   ├── pages/           # index.tsx, _app.tsx, _document.tsx, api/
+│   └── styles/          # globals.css (Tailwind + variáveis de tema)
+├── next.config.ts
+├── tsconfig.json
+├── tailwind.config.ts
+└── package.json
 ```
 
 ---
 
-## Paleta de Cores
+## Tema (cores)
 
-O portfólio utiliza uma paleta moderna de cores escuras com destaque roxo:
+O site usa variáveis CSS para tema claro e escuro, com cor de destaque azul:
 
-```css
---primary-purple: #6a6aff;
---dark-bg: #0a0a0a;
---darker-bg: #000000;
---card-bg: #111111;
---text-primary: #ffffff;
---text-secondary: #cccccc;
---border-color: rgba(106, 106, 255, 0.2);
-```
+- **Claro:** fundo claro, texto escuro, bordas suaves
+- **Escuro:** fundo escuro, texto claro
+- **Destaque:** azul (`#3b82f6`) para links, botões e destaques
 
 ---
 
 ## Contato
 
-Estou sempre aberto a novas oportunidades e colaborações!
+- **Email:** [adelmouhaidly6@gmail.com](mailto:adelmouhaidly6@gmail.com)
+- **Telefone:** (11) 91587-5111
+- **LinkedIn:** [linkedin.com/in/adelmouhaidly](https://www.linkedin.com/in/adelmouhaidly)
+- **GitHub:** [github.com/AdelMouhaidly](https://github.com/AdelMouhaidly)
 
-- **Email**: [adelmouhaidly6@gmail.com](mailto:adelmouhaidly6@gmail.com)
-- **Telefone**: (11) 91587-5111
-- **LinkedIn**: [linkedin.com/in/adelmouhaidly](https://www.linkedin.com/in/adelmouhaidly)
-- **GitHub**: [github.com/AdelMouhaidly](https://github.com/AdelMouhaidly)
+No próprio site, a seção "Entre em contato" tem um formulário que abre o Gmail (ou o app de email do dispositivo) com tudo preenchido.
 
 ---
 
 ## Licença
 
-© 2025 Adel Mouhaidly. Todos os direitos reservados.
-
----
-
-## Agradecimentos
-
-Desenvolvido por [Adel Mouhaidly](https://portfolio-do-adel-mouhaidly-7ide.vercel.app/)
-
-Feito com Next.js, TypeScript e dedicação.
+© 2026 Adel Mouhaidly. Todos os direitos reservados.
